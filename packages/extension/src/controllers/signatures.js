@@ -6,6 +6,7 @@ import * as t from "@onflow/types";
 import { Buffer } from "buffer";
 const p256 = new EC("p256");
 const secp256 = new EC("secp256k1");
+import { sha256} from '@noble/hashes/sha2.js'
 
 // Takes in a msg that is already in hex form, and a
 // hashAlg in flow's key format for hash algorithms
@@ -46,7 +47,7 @@ export const verifyUserSignature = async (
   const CODE = `
     import Crypto
 
-    pub fun main(rawPublicKeys: [String], weights: [UFix64], signatures: [String], signedData: String): Bool {
+    access(all) fun main(rawPublicKeys: [String], weights: [UFix64], signatures: [String], signedData: String): Bool {
       let keyList = Crypto.KeyList()
       var i = 0
       for rawPublicKey in rawPublicKeys {

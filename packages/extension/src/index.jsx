@@ -14,8 +14,6 @@ const fclTabId = Number(
   new URLSearchParams(window.location.search).get("tabId")
 );
 
-console.log("fclTabId AAA =>", fclTabId, new URLSearchParams(window.location.search))
-
 root.render(
   <React.StrictMode>
     <ChakraProvider>

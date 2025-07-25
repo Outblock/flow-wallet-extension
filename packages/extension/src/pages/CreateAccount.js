@@ -20,7 +20,7 @@ import {
   validateFlowAccountInfo,
 } from "../controllers/accounts";
 import LoadingSpinner from "../components/LoadingSpinner";
-const p256 = new EC("p256");
+const secp256k1 = new EC("secp256k1");
 
 const CreateAccount = ({ location }) => {
   const history = useHistory();
@@ -33,15 +33,17 @@ const CreateAccount = ({ location }) => {
   const [pageTitle, setPageTitle] = useState("");
 
   const createAccount = async () => {
+    console.log('createAccount')
     let account;
-    const key = p256.genKeyPair();
+    const key = secp256k1.genKeyPair();
     const pubKey = key.getPublic("hex").slice(2);
     const privateKey = key.getPrivate("hex");
     const data = {
       publicKey: pubKey,
-      signatureAlgorithm: "ECDSA_P256",
-      hashAlgorithm: "SHA3_256",
+      signatureAlgorithm: "ECDSA_secp256k1",
+      hashAlgorithm: "SHA2_256",
     };
+    console.log('createAccount', data)
     const url =
       "https://hardware-wallet-api-testnet.staging.onflow.org/accounts";
 
@@ -57,6 +59,7 @@ const CreateAccount = ({ location }) => {
       account = await response.json();
       await validateFlowAccountInfo(account.address, privateKey, keyID);
     } catch (e) {
+      console.log(e)
       toast({
         description: e.toString(),
         status: "error",
