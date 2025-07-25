@@ -1,10 +1,17 @@
-import "../src/config"
-import "../src/decorate"
-import {COMMANDS} from "../src/cmds"
-import useCurrentUser from "../src/hooks/use-current-user"
-import useConfig from "../src/hooks/use-config"
+import "./config"
+import "./decorate"
+import {COMMANDS} from "./cmds"
+import useCurrentUser from "./hooks/use-current-user"
+import useConfig from "./hooks/use-config"
 import { useAccount, useConnect, useDisconnect } from 'wagmi'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
+import { WagmiProvider } from 'wagmi'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit'
+import { wagmiConfig } from './evm-config'
+import '@rainbow-me/rainbowkit/styles.css'
+
+const queryClient = new QueryClient()
 
 const renderCommand = d => {
   return (
@@ -73,7 +80,7 @@ function EVMContainer() {
   )
 }
 
-export default function FlowHarness() {
+function FlowHarness() {
   return (
     <div style={{ fontFamily: 'Arial, sans-serif' }}>
       <h1 style={{ textAlign: 'center', color: '#333' }}>Flow & EVM Harness</h1>
@@ -86,5 +93,17 @@ export default function FlowHarness() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function App() {
+  return (
+    <WagmiProvider config={wagmiConfig}>
+      <QueryClientProvider client={queryClient}>
+        <RainbowKitProvider>
+          <FlowHarness />
+        </RainbowKitProvider>
+      </QueryClientProvider>
+    </WagmiProvider>
   )
 }

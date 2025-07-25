@@ -45,9 +45,9 @@ export const flowTestnet = {
   testnet: true,
 }
 
-export const evmConfig = getDefaultConfig({
+export const wagmiConfig = getDefaultConfig({
   appName: 'Flow EVM Harness',
-  projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID || 'YOUR_PROJECT_ID',
+  projectId: import.meta.env.WALLETCONNECT_PROJECT_ID || 'YOUR_PROJECT_ID',
   chains: [flowMainnet, flowTestnet],
   transports: {
     [flowMainnet.id]: http(),
