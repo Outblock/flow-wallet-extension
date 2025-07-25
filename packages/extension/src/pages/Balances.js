@@ -27,7 +27,6 @@ const Balances = () => {
         Logged in to <span style={{ fontWeight: "bold" }}>{address}</span>
       </Text>
       <BalanceCard currency="flow" address={account.address} />
-      <BalanceCard currency="fusd" address={account.address} />
     </PopupLayout>
   );
 };

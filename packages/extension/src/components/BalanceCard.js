@@ -25,7 +25,7 @@ const retrieveBalance = async (currency, address) => {
 const BalanceCard = ({ currency, address }) => {
   currency = currency.toLowerCase();
   const [balance, setBalance] = useState("--");
-  const ftTokenName = currency === "flow" ? "Flow" : "FUSD";
+  const ftTokenName = "Flow";
 
   useEffect(() => {
     async function getBalance() {
@@ -63,13 +63,13 @@ const BalanceCard = ({ currency, address }) => {
             {ftTokenName} Balance
           </Text>
           <Text fontWeight="bold" fontSize="24px">
-            {currency === "flow" ? "₣" : "$"}
+            {"₣"}
             {balance}
           </Text>
         </VStack>
         <Center>
           <Link
-            href={`https://testnet.flowscan.org/account/${address}`}
+            href={`https://testnet.flowscan.io/account/${address}`}
             isExternal
           >
             <ExternalLinkIcon w={6} h={6} color={styles.primaryColor} />
