@@ -1,8 +1,8 @@
 import {useState, useEffect} from "react"
-import * as fcl from "@onflow/fcl"
+import { config as fclConfig } from "@onflow/fcl"
 
 export default function useConfig() {
   const [config, setConfig] = useState(null)
-  useEffect(() => fcl.config().subscribe(setConfig), [])
+  useEffect(() => fclConfig().subscribe(setConfig), [])
   return config
 }

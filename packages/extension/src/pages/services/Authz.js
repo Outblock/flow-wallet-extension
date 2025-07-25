@@ -84,6 +84,8 @@ export default function Authz() {
     try {
       await keyVault.unlockVault(password);
       setUnlocked(true);
+      // Clear password to prevent browser warning about unsaved changes
+      setPassword("");
     } catch (e) {
       toast({
         description: "Invalid password",
@@ -114,7 +116,12 @@ export default function Authz() {
         signedMessage
       ),
     });
-    setTxView("sending");
+
+    // Clear any form state to prevent browser warnings
+    setPassword("");
+
+    // Close the window immediately after sending
+    window.close();
   }
 
   function sendCancelToFCL() {
@@ -139,6 +146,8 @@ export default function Authz() {
                 p="2"
                 mt="24"
                 placeholder="Password"
+                autoComplete="off"
+                data-form="false"
               ></Input>
               <Spacer />
             </Flex>

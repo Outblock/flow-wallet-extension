@@ -34,7 +34,7 @@ if (!chrome.action) {
 
 // This object will maintain a map from address to private key for the caller
 
-var passworder = require("browser-passworder");
+import passworder from "browser-passworder";
 
 class KeyVault {
   constructor(opts = {}) {

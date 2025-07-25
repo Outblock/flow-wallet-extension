@@ -3,7 +3,7 @@ import { SHA3 } from "sha3";
 import forge from "node-forge";
 import * as fcl from "@onflow/fcl";
 import * as t from "@onflow/types";
-var Buffer = require("buffer/").Buffer;
+import { Buffer } from "buffer";
 const p256 = new EC("p256");
 const secp256 = new EC("secp256k1");
 

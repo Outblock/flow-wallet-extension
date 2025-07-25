@@ -7,7 +7,7 @@ export const CMD = async () => {
   return mutate({
     cadence: `
       transaction(a: Int, b: Int, c: Address) {
-        prepare(acct: AuthAccount) {
+        prepare(acct: &Account) {
           log(acct)
           log(a)
           log(b)

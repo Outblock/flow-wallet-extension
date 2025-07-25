@@ -8,7 +8,8 @@ import { keyVault } from "./lib/keyVault";
 import { loadAccounts } from "./lib/AccountManager";
 import "./Popup.css";
 
-function Popup() {
+function Popup({ fclTabId }) {
+  console.log("fclTabId BBB =>", fclTabId);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -20,26 +21,17 @@ function Popup() {
     load();
   }, []);
 
-  useEffect(() => {
-    window.addEventListener("beforeunload", cancelOnClose);
-    return () => {
-      window.removeEventListener("beforeunload", cancelOnClose);
-    };
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener("beforeunload", cancelOnClose);
+  //   return () => {
+  //     window.removeEventListener("beforeunload", cancelOnClose);
+  //   };
+  // }, []);
 
-  const cancelOnClose = (e) => {
-    e.preventDefault();
-    chrome.tabs &&
-      chrome.tabs.query(
-        {
-          active: true,
-          currentWindow: false,
-        },
-        (tabs) => {
-          chrome.tabs.sendMessage(tabs[0].id || 0, { type: "FCL:VIEW:CLOSE" });
-        }
-      );
-  };
+  // const cancelOnClose = (e) => {
+  //   e.preventDefault();
+  //   chrome.tabs.sendMessage(fclTabId, { type: "FCL:VIEW:CLOSE" });
+  // };
 
   if (loading) {
     return null;
@@ -60,10 +52,10 @@ function Popup() {
             <PopupRouter />
           </Route>
           <Route exact path="/authn">
-            <AuthnRouter />
+            <AuthnRouter fclTabId={fclTabId} />
           </Route>
           <Route exact path="/authz">
-            <Authz />
+            <Authz fclTabId={fclTabId} />
           </Route>
         </Switch>
       </Box>

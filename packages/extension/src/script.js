@@ -1,6 +1,4 @@
-import { WalletUtils } from "@onflow/fcl";
-
-const service = {
+const AuthnService = {
   f_type: "Service",
   f_vsn: "1.0.0",
   type: "authn",
@@ -14,9 +12,13 @@ const service = {
   provider: {
     address: "0x1234",
     name: "Flow Wallet",
-    icon: null,
+    icon: "https://raw.githubusercontent.com/Outblock/Assets/refs/heads/main/ft/flow/logo.png",
     description: "Flow Non-Custodial Wallet Extension for Chrome",
   },
 };
 
-WalletUtils.injectExtService(service);
+// Inject into window.fcl_extensions as per FCL Discovery documentation
+if (!Array.isArray(window.fcl_extensions)) {
+  window.fcl_extensions = [];
+}
+window.fcl_extensions.push(AuthnService);

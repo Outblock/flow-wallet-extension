@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rm:*)",
+      "Bash(npm install:*)",
+      "Bash(pnpm install:*)",
+      "Bash(pnpm run:*)",
+      "Bash(pnpm add:*)",
+      "Bash(pnpm --filter extension run build)",
+      "Bash(pnpm remove:*)",
+      "Bash(mkdir:*)",
+      "Bash(mv:*)",
+      "Bash(timeout 10s pnpm run dev)",
+      "Bash(true)",
+      "Bash(pnpm update:*)",
+      "Bash(cp:*)",
+      "Bash(pnpm build:*)",
+      "Bash(ls:*)"
+    ],
+    "deny": []
+  }
+}

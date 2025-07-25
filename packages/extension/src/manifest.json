@@ -1,12 +1,13 @@
 {
   "manifest_version": 3,
   "name": "Flow Wallet Extension",
+  "version": "1.0.0",
   "description": "Chrome wallet extension for Flow",
   "background": {
     "service_worker": "background.js"
   },
   "action": {
-    "default_popup": "index.html",
+    "default_popup": "src/index.html",
     "default_title": "Open the popup"
   },
   "icons": {
@@ -20,10 +21,10 @@
       "js": ["content.js"]
     }
   ],
-  "permissions": ["activeTab", "storage", "alarms"],
+  "permissions": ["activeTab", "storage", "alarms", "windows"],
   "web_accessible_resources": [
     {
-      "resources": ["index.html", "script.js"],
+      "resources": ["src/index.html", "script.js"],
       "matches": ["<all_urls>"]
     }
   ]

@@ -18,7 +18,7 @@ export const createOrImportAccount = async (
   if (!privKey || privKey.length === 0) {
     throw new Error("Invalid private key provided");
   }
-  if (!keyID || parseInt(keyID) === NaN) {
+  if (!keyID || isNaN(parseInt(keyID))) {
     throw new Error("Invalid Key ID provided");
   }
   const accountInfo = await fcl
@@ -65,7 +65,7 @@ export const validateFlowAccountInfo = async (
   if (!privKey || privKey.length === 0) {
     throw new Error("Invalid private key provided");
   }
-  if (!keyID || parseInt(keyID) === NaN) {
+  if (!keyID || isNaN(parseInt(keyID))) {
     throw new Error("Invalid Key ID provided");
   }
 

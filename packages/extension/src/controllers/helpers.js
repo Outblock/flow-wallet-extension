@@ -1,4 +1,4 @@
-var Buffer = require("buffer/").Buffer;
+import { Buffer } from "buffer";
 export const toHex = (str) => Buffer.from(str, "utf8").toString("hex");
 
 export const fromHex = (str) => Buffer.from(str, "hex").toString("utf8");
@@ -13,3 +13,17 @@ const USER_DOMAIN_TAG = rightPaddedHexBuffer(
   Buffer.from("FLOW-V0.0-user").toString("hex"),
   32
 ).toString("hex");
+
+/**
+ * Safely close the extension popup without showing browser warnings
+ * Uses Chrome extension API when available, falls back to window.close()
+ */
+export const closePopup = () => {
+  if (chrome.windows && chrome.windows.getCurrent) {
+    chrome.windows.getCurrent((window) => {
+      chrome.windows.remove(window.id);
+    });
+  } else {
+    window.close();
+  }
+};

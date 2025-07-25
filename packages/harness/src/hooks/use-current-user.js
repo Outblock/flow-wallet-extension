@@ -1,8 +1,8 @@
 import {useState, useEffect} from "react"
-import * as fcl from "@onflow/fcl"
+import { currentUser as fclCurrentUser } from "@onflow/fcl"
 
 export default function useCurrentUser() {
   const [currentUser, setCurrentUser] = useState(null)
-  useEffect(() => fcl.currentUser().subscribe(setCurrentUser), [])
+  useEffect(() => fclCurrentUser().subscribe(setCurrentUser), [])
   return currentUser
 }

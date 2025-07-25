@@ -1,12 +1,12 @@
-import {query} from "@onflow/fcl"
-import {yup, nope} from "../util"
+import { query } from "@onflow/fcl";
+import { yup, nope } from "../util";
 
-export const LABEL = "Query 2 (args)"
+export const LABEL = "Query 2 (args)";
 export const CMD = async () => {
   // prettier-ignore
   return query({
     cadence: `
-      pub fun main(a: Int, b: Int): Int {
+      access(all) fun main(a: Int, b: Int): Int {
         return a + b
       }
     `,
@@ -16,4 +16,4 @@ export const CMD = async () => {
     ],
   }).then(yup("Q-1"))
     .catch(nope("Q-1"))
-}
+};

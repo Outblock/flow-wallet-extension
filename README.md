@@ -1,7 +1,7 @@
 <p align="center">
   <h1 align="center">Flow Chrome Extension Wallet Example</h1>
   <p align="center">
-    <i>An example and guide showing how to build an FCL-compatible wallet extension on Flow.</i>
+    <i>An example and guide showing how to build an FCL-compatible wallet extension on Flow with EVM support.</i>
     <br />
     <a href="docs/index.md"><strong>Read the docs »</strong></a>
     <br />
@@ -12,49 +12,85 @@
   </p>
 </p>
 
-## Getting started
+## 🚀 Architecture
+
+This project consists of two main components:
+
+- **Extension** (`packages/extension/`): Chrome extension wallet built with React + Vite
+- **Harness** (`packages/harness/`): Testing dApp built with Next.js, featuring dual Flow/EVM support with RainbowKit
+
+## 🛠 Getting Started
+
+### Prerequisites
+
+- Node.js 18+ 
+- pnpm (recommended package manager)
+
+### Installation
 
 Run all commands from the root directory.
 
-### Install
+```shell
+# Install pnpm globally if you haven't already
+npm install -g pnpm
+
+# Install dependencies
+pnpm install
+```
+
+### Build the Extension
 
 ```shell
+# Development build (with watch mode)
+cd packages/extension
+pnpm run dev
 
-npm i
-
+# Production build
+pnpm run build
 ```
 
-### Build the extension
+### Add the Extension to Chrome
+
+1. In Chrome, navigate to `chrome://extensions`
+2. Enable the "Developer mode" toggle
+3. Click on "Load unpacked"
+4. Select the `packages/extension/dist` folder
+
+### Refreshing the Extension
+
+If you make changes to the code:
+1. Rebuild with `pnpm run build` (or use `pnpm run dev` for watch mode)
+2. Click the refresh icon in the Chrome extensions page
+
+### Start the Harness App
+
+The harness is a Next.js web app with dual Flow/EVM support for testing wallet functionality.
 
 ```shell
+# Development server
+cd packages/harness
+pnpm run dev
 
-npm run dev --workspace fcl-wallet-extension-demo
-
+# Production build
+pnpm run build
+pnpm run start
 ```
 
-### Add the extension to Chrome
+Open [http://localhost:3000](http://localhost:3000) to view the harness.
 
-- In Chrome, navigate to `chrome://extensions`
-- Enable the "Developer mode" toggle
-- Click on "Load unpacked"
-- Select the `packages/extension/build` folder
+## 🌐 Flow EVM Support
 
-### Refreshing the extension
+The harness includes built-in support for Flow EVM networks:
 
-If you make changes to the code, rebuild the extension with `npm run dev --workspace fcl-wallet-extension-demo` and then click the refresh icon in the Chrome extensions page.
+- **Flow EVM Mainnet** (Chain ID: 747)
+  - RPC: `https://mainnet.evm.nodes.onflow.org`
+  - Explorer: `https://evm.flowscan.org`
 
-### Start the harness app
+- **Flow EVM Testnet** (Chain ID: 545)  
+  - RPC: `https://testnet.evm.nodes.onflow.org`
+  - Explorer: `https://evm-testnet.flowscan.org`
 
-The harness is a barebones web app that allows you to
-connect to the extension and send transactions.
-
-```sh
-
-npm run start --workspace fcl-harness
-
-```
-
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The harness displays both Flow and EVM connection details side-by-side, making it easy to test both networks simultaneously.
 
 ---
 
