@@ -25,7 +25,6 @@ export default function Authn({ fclTabId }) {
      * We can't use "chrome.runtime.sendMessage" for sending messages from React.
      * For sending messages from React we need to specify which tab to send it to.
      */
-
     chrome.tabs.sendMessage(fclTabId, { type: "FCL:VIEW:READY" });
 
     const extMessageHandler = (msg, sender, sendResponse) => {

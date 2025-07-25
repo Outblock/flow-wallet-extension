@@ -1,10 +1,12 @@
 import {mutate} from "@onflow/fcl"
 import {yup, nope} from "../util"
+import * as fcl from "@onflow/fcl"
 
 export const LABEL = "Mutate 2 (args)"
 export const CMD = async () => {
   // prettier-ignore
-  return mutate({
+  try {
+  mutate({
     cadence: `
       transaction(a: Int, b: Int, c: Address) {
         prepare(acct: &Account) {
@@ -13,14 +15,23 @@ export const CMD = async () => {
           log(b)
           log(c)
         }
-      }
-    `,
-    args: (arg, t) => [
-      arg(6, t.Int),
-      arg(7, t.Int),
-      arg("0xba1132bc08f82fe2", t.Address),
-    ],
-    limit: 50,
-  }).then(yup("M-1"))
-    .catch(nope("M-1"))
+      `,
+      args: (arg, t) => [
+        arg(6, t.Int),
+        arg(7, t.Int),
+        arg("0xba1132bc08f82fe2", t.Address),
+      ],
+      limit: 50,
+    })
+
+    yup("M-2")(response)
+
+    fcl.tx(response).subscribe((txStatus) => {
+      console.log("TX:STATUS", response, txStatus);
+    });
+
+    return await fcl.tx(response).onceSealed()
+  } catch(e) {
+    nope("M-2")(e)
+  }
 }

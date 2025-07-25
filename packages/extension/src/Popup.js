@@ -9,7 +9,6 @@ import { loadAccounts } from "./lib/AccountManager";
 import "./Popup.css";
 
 function Popup({ fclTabId }) {
-  console.log("fclTabId BBB =>", fclTabId);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

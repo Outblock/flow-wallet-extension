@@ -21,11 +21,14 @@
       "js": ["content.js"]
     }
   ],
-  "permissions": ["activeTab", "storage", "alarms", "windows"],
+  "permissions": ["activeTab", "storage", "alarms", "tabs", "scripting"],
   "web_accessible_resources": [
     {
       "resources": ["src/index.html", "script.js"],
       "matches": ["<all_urls>"]
     }
+  ],
+  "host_permissions": [
+    "http://localhost/*"
   ]
 }
