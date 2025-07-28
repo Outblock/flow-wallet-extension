@@ -64,6 +64,16 @@ const UserMenu = ({ location }) => {
           }}
         />
         <Box mt="20px" />
+        <SelectableListItem
+          text="View Keys"
+          onClick={() => {
+            history.push({
+              pathname: "/KeysDisplay",
+              state: { withGoBack: true },
+            });
+          }}
+        />
+        <Box mt="20px" />
         <SelectableListItem text="Lock Wallet" onClick={lockWallet} />
         <Box mt="20px" />
         <SelectableListItem

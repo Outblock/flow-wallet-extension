@@ -11,6 +11,7 @@ import History from "../pages/History";
 import SetPassword from "../pages/SetPassword";
 import SelectAccount from "../pages/SelectAccount";
 import UserMenu from "../pages/UserMenu";
+import KeysDisplay from "../pages/KeysDisplay";
 import { keyVault } from "../lib/keyVault";
 import { accountManager } from "../lib/AccountManager";
 
@@ -71,6 +72,7 @@ const PopupRouter = () => {
         <Route path="/Swaps" component={Swaps}></Route>
         <Route path="/History" component={History}></Route>
         <Route path="/UserMenu" component={UserMenu}></Route>
+        <Route path="/KeysDisplay" component={KeysDisplay}></Route>
       </AnimatedSwitch>
     </MemoryRouter>
   );

@@ -6,7 +6,7 @@ import * as t from "@onflow/types";
 import { Buffer } from "buffer";
 const p256 = new EC("p256");
 const secp256 = new EC("secp256k1");
-import { sha256} from '@noble/hashes/sha2.js'
+import { sha256 } from "@noble/hashes/sha2.js";
 
 // Takes in a msg that is already in hex form, and a
 // hashAlg in flow's key format for hash algorithms
@@ -17,9 +17,7 @@ const hashMsgHex = (msgHex, hashAlg) => {
     sha.update(Buffer.from(msgHex, "hex"));
     return sha.digest();
   } else if (hashAlg === 1) {
-    const md = forge.md.sha256.create();
-    md.update(Buffer.from(msgHex, "hex"));
-    return md.digest();
+    return sha256(Buffer.from(msgHex, "hex"));
   } else {
     throw new Error("Unsupported hash alg provided");
   }
