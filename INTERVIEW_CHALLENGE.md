@@ -4,6 +4,8 @@
 
 This is a technical interview challenge designed to test your ability to extend an existing Flow wallet browser extension with Ethereum Virtual Machine (EVM) support. You'll be working with Chrome extension APIs, cryptographic operations, and Web3 integration patterns.
 
+**Note**: You are encouraged to use any AI tools (like Cursor, Claude Code, ChatGPT, etc.) and online resources to help you complete this challenge. This reflects real-world development practices where developers leverage available tools and resources to solve problems efficiently.
+
 ## Challenge Description
 
 The Flow Wallet Extension currently supports Flow blockchain operations. Your task is to extend it to support Flow EVM testnet, allowing users to:
@@ -16,8 +18,9 @@ The Flow Wallet Extension currently supports Flow blockchain operations. Your ta
 ## Starting Point
 
 - **Branch to start from**: `master`
-- **Time estimate**: 4-6 hours
+- **Time estimate**: 1.5-2 hours
 - **Tech stack**: React, Chrome Extension APIs, ethers.js, cryptography
+- **Allowed tools**: AI assistants (Cursor, Claude Code, ChatGPT, etc.), online documentation, Stack Overflow, GitHub, and any other development resources
 
 ## Prerequisites
 
@@ -73,8 +76,9 @@ When you're done:
 1. Ensure your code builds without errors
 2. Test the complete flow with a sample dApp
 3. Document any assumptions or design decisions
+4. **(Optional)** Mention any AI tools or resources you found particularly helpful
 
-Good luck! This challenge tests real-world wallet extension development skills that are highly valuable in the Web3 ecosystem.
+Good luck! This challenge tests real-world wallet extension development skills that are highly valuable in the Web3 ecosystem. Remember, using AI tools and online resources is not only allowed but encouraged as it reflects modern development practices.
 
 ## Questions or Issues?
 
