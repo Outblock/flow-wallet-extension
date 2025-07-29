@@ -33,7 +33,6 @@ const CreateAccount = ({ location }) => {
   const [pageTitle, setPageTitle] = useState("");
 
   const createAccount = async () => {
-    console.log('createAccount')
     let account;
     const key = secp256k1.genKeyPair();
     const pubKey = key.getPublic("hex").slice(2);
@@ -43,7 +42,6 @@ const CreateAccount = ({ location }) => {
       signatureAlgorithm: "ECDSA_secp256k1",
       hashAlgorithm: "SHA2_256",
     };
-    console.log('createAccount', data)
     const url =
       "https://hardware-wallet-api-testnet.staging.onflow.org/accounts";
 
@@ -59,7 +57,6 @@ const CreateAccount = ({ location }) => {
       account = await response.json();
       await validateFlowAccountInfo(account.address, privateKey, keyID);
     } catch (e) {
-      console.log(e)
       toast({
         description: e.toString(),
         status: "error",

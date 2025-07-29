@@ -73,8 +73,6 @@ export default function Authz({ fclTabId }) {
     try {
       await keyVault.unlockVault(password);
       setUnlocked(true);
-      // Clear password to prevent browser warning about unsaved changes
-      setPassword("");
     } catch (e) {
       toast({
         description: "Invalid password",
@@ -106,9 +104,6 @@ export default function Authz({ fclTabId }) {
       ),
     });
 
-    // Clear any form state to prevent browser warnings
-    setPassword("");
-
     // Close the window immediately after sending
     window.close();
   }
@@ -135,8 +130,6 @@ export default function Authz({ fclTabId }) {
                 p="2"
                 mt="24"
                 placeholder="Password"
-                autoComplete="off"
-                data-form="false"
               ></Input>
               <Spacer />
             </Flex>
